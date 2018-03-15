@@ -15,6 +15,8 @@
 		CE22F35D205A92B2005FDC00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE22F35B205A92B2005FDC00 /* LaunchScreen.storyboard */; };
 		CE22F368205A92B3005FDC00 /* swiftCourseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F367205A92B3005FDC00 /* swiftCourseTests.swift */; };
 		CE22F373205A92B3005FDC00 /* swiftCourseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F372205A92B3005FDC00 /* swiftCourseUITests.swift */; };
+		CE22F381205A9ECE005FDC00 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F380205A9ECE005FDC00 /* Data.swift */; };
+		CE22F383205A9EF4005FDC00 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F382205A9EF4005FDC00 /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		CE22F36E205A92B3005FDC00 /* swiftCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE22F372205A92B3005FDC00 /* swiftCourseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftCourseUITests.swift; sourceTree = "<group>"; };
 		CE22F374205A92B3005FDC00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE22F380205A9ECE005FDC00 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		CE22F382205A9EF4005FDC00 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				CE22F35B205A92B2005FDC00 /* LaunchScreen.storyboard */,
 				CE22F35E205A92B2005FDC00 /* Info.plist */,
 				CE22F356205A92B2005FDC00 /* swiftCourse.xcdatamodeld */,
+				CE22F380205A9ECE005FDC00 /* Data.swift */,
+				CE22F382205A9EF4005FDC00 /* City.swift */,
 			);
 			path = swiftCourse;
 			sourceTree = "<group>";
@@ -263,8 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE22F352205A92B2005FDC00 /* ViewController.swift in Sources */,
+				CE22F383205A9EF4005FDC00 /* City.swift in Sources */,
 				CE22F350205A92B2005FDC00 /* AppDelegate.swift in Sources */,
 				CE22F358205A92B2005FDC00 /* swiftCourse.xcdatamodeld in Sources */,
+				CE22F381205A9ECE005FDC00 /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
