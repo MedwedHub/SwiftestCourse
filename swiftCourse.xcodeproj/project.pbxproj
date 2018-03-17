@@ -17,6 +17,7 @@
 		CE22F373205A92B3005FDC00 /* swiftCourseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F372205A92B3005FDC00 /* swiftCourseUITests.swift */; };
 		CE22F381205A9ECE005FDC00 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F380205A9ECE005FDC00 /* Data.swift */; };
 		CE22F383205A9EF4005FDC00 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F382205A9EF4005FDC00 /* City.swift */; };
+		CE62037F205CD99000B6E5FF /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62037E205CD99000B6E5FF /* CityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		CE22F374205A92B3005FDC00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE22F380205A9ECE005FDC00 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CE22F382205A9EF4005FDC00 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		CE62037E205CD99000B6E5FF /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,13 +107,14 @@
 			children = (
 				CE22F34F205A92B2005FDC00 /* AppDelegate.swift */,
 				CE22F351205A92B2005FDC00 /* ViewController.swift */,
+				CE62037E205CD99000B6E5FF /* CityViewController.swift */,
+				CE22F380205A9ECE005FDC00 /* Data.swift */,
+				CE22F382205A9EF4005FDC00 /* City.swift */,
 				CE22F353205A92B2005FDC00 /* Main.storyboard */,
 				CE22F359205A92B2005FDC00 /* Assets.xcassets */,
 				CE22F35B205A92B2005FDC00 /* LaunchScreen.storyboard */,
 				CE22F35E205A92B2005FDC00 /* Info.plist */,
 				CE22F356205A92B2005FDC00 /* swiftCourse.xcdatamodeld */,
-				CE22F380205A9ECE005FDC00 /* Data.swift */,
-				CE22F382205A9EF4005FDC00 /* City.swift */,
 			);
 			path = swiftCourse;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				CE22F350205A92B2005FDC00 /* AppDelegate.swift in Sources */,
 				CE22F358205A92B2005FDC00 /* swiftCourse.xcdatamodeld in Sources */,
 				CE22F381205A9ECE005FDC00 /* Data.swift in Sources */,
+				CE62037F205CD99000B6E5FF /* CityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

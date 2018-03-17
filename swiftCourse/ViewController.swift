@@ -12,10 +12,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet var tableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -36,11 +34,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
         let city = Data.shared.cities[indexPath.row]
-    cell.textLabel?.text = "\(city.name)" + " with \(city.id)"
+        cell.textLabel?.text = "\(city.name)" + " with \(city.id)"
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cityVC: CityViewController? = segue.destination as? CityViewController
+        
+        let indexPath = tableView.indexPathForSelectedRow
+        let city = Data.shared.cities[indexPath!.row]
+        
+        cityVC?.city = city
     }
 }
 
