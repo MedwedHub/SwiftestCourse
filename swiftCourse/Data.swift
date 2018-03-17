@@ -15,9 +15,11 @@ class Data {
     
     internal var cities = [City]()
     
-    internal func appending() {
+    internal func appendCity() {
+        
         for i in 0..<50 {
-            cities.append(City(name: "City \(i)", id: " id = \(i)"))
+            
+            cities.append(City(name: "City \(i)", id: " id = \(UUID().uuidString)"))
         }
     }
     

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        Data.shared.appendCity()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -26,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return Data.shared.cities.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -36,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
         let city = Data.shared.cities[indexPath.row]
-        cell.textLabel?.text = "name = \(city.name)"
+    cell.textLabel?.text = "\(city.name)" + " with \(city.id)"
         
         return cell
     }
