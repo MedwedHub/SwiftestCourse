@@ -14,14 +14,16 @@ struct User {
     var avatar: UIImage?
 }
 
-class UserManager {
+class UserManager {    
     private let defaults = UserDefaults.standard
-    private let use
+    private let user = User()
+    
     internal func getCurrentUser() -> User {
         let name = UserDefaults.standard.string(forKey: "userNameKey")
-        let name = UserDefaults.standard.object(forKey: "userBirthdayKey") as? Date
+        let birthday = UserDefaults.standard.object(forKey: "userBirthdayKey") as? Date
+        let user = User(name: name, birthday: birthday, avatar: nil)
         
-        let user = User(name: name, birthday: birhtday, avatar: nil)
+        return user
     }
     
     internal func change(user: User) {

@@ -8,12 +8,20 @@
 
 import UIKit
 
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn (_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
+}
+
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var birthdayField: UITextField!
     
-    private var datePicker: UIDatePicker
+    private var datePicker: UIDatePicker!
     private let userManager = UserManager()
     private var user: User!
     
@@ -21,14 +29,17 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         nameField.delegate = self
+        
         configurePicker()
+        
         birthdayField.inputView = datePicker
         
-        user = UserManager.getCurrentUser()
+        user = userManager.getCurrentUser()
         nameField.text = user.name
         
         let dateString: String
         if let date = user.birthday {
+            
             dateString = DateFormatter.string(from: date)
         } else {
             dateString = ""
@@ -43,9 +54,9 @@ class ProfileViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(onDatePickerChanged), for: UIControlEvents.valueChanged )
     }
     
-    func onDatePickerChanged(datePicker: UIDatePicker) {
+    @objc func onDatePickerChanged(datePicker: UIDatePicker) {
         
-        let date: Data = datePicker.date
+        let date = datePicker.date
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "dd-MM-yyy"
@@ -58,6 +69,16 @@ class ProfileViewController: UIViewController {
         userManager.change(user: user)
     }
     
+    
+    
+    func textFieldDidEditing(_ textField: UITextField) {
+        if let text = textField.text, text.count > 0 {
+            user.name = text
+            userManager.change(user: user)
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,20 +86,7 @@ class ProfileViewController: UIViewController {
     
    
 }
-extension ProfileViewController: UITextFieldDelegate {
-    func textFieldShouldReturn (_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
-    }
-    
-}
 
-func textFieldDidEditing(_ textField: UITextField) {
-    if let text = textField.text, text.count > 0 {
-        user.name = text
-        userManager.change(user: user)
-    }
-}
 
 
 
