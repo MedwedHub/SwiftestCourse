@@ -35,20 +35,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! CustomTableViewCell
         let city = Data.shared.cities[indexPath.row]
-        cell.textLabel?.text = "\(city.name)" + " with \(city.id)"
-        
+        let favourite = Data.shared.isFavourite(city: city)
+        //cell.textLabel?.text = "\(city.name)" + " with \(city.id)"
+    
+        cell.cityLabel.text = "\(city.name)" + " with \(city.id)"
+        cell.cityImageFav.image = UIImage(named: "Star_on")
+    
+        if !favourite {
+            cell.cityImageFav.isHidden = true
+        } else {
+            cell.cityImageFav.isHidden = false
+        }
+    
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cityVC: CityViewController? = segue.destination as? CityViewController
         
+        let cityVC: CityViewController? = segue.destination as? CityViewController
         let indexPath = tableView.indexPathForSelectedRow
         let city = Data.shared.cities[indexPath!.row]
         
         cityVC?.city = city
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 }
 

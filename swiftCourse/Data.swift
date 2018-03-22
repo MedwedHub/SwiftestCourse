@@ -24,6 +24,7 @@ class Data {
     }
     
     internal func isFavourite(city: City) -> Bool {
+        
         for favorite in favouriteCities {
             if favorite.id == city.id {
                 return true
@@ -32,22 +33,21 @@ class Data {
         return false
     }
     internal func changeFavourite(for city: City){
+        
         let exist = isFavourite(city: city)
         if exist {
-            removeCity(city: city)
-            print("Remove")
+            removeCity(city: city)            
         } else {
             favouriteCities.append(city)
-            print("Append")
         }
     }
     internal func removeCity(city: City) {
-        var newFavorite = [City]()
+        
         for favourite in favouriteCities {
-            if favourite.id != city.id{
-                //print("TRUE - favoutite`s id = \(favourite.id) and city`s id = \(city.id)")
-            } else {
-                
+            if favourite.id == city.id{
+                if let position = favouriteCities.index(where: { $0.id == city.id}) {
+                    favouriteCities.remove(at: position)
+                }
             }
         }
     }

@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,33 +15,46 @@
         <!--Cities-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="swiftCourse" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4OU-98-Rjt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" textLabel="4UC-SV-bov" imageView="EIY-hM-6my" rowHeight="100" style="IBUITableViewCellStyleDefault" id="iuN-NI-8UY">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" rowHeight="45" id="iuN-NI-8UY" customClass="CustomTableViewCell" customModule="swiftCourse" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iuN-NI-8UY" id="sek-k1-XT4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4UC-SV-bov">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="99.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLJ-dk-Zz9">
+                                            <rect key="frame" x="16" y="0.0" width="312" height="47"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EIY-hM-6my">
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star_on" translatesAutoresizingMaskIntoConstraints="NO" id="zUB-Fq-R4B">
+                                            <rect key="frame" x="336" y="12" width="23" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="23" id="DyI-p2-5SC"/>
+                                                <constraint firstAttribute="height" constant="23" id="JrR-vC-vTi"/>
+                                                <constraint firstAttribute="width" secondItem="zUB-Fq-R4B" secondAttribute="height" multiplier="1:1" id="U44-IG-i0Z"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zUB-Fq-R4B" firstAttribute="centerY" secondItem="dLJ-dk-Zz9" secondAttribute="centerY" id="8s4-83-CDC"/>
+                                        <constraint firstItem="dLJ-dk-Zz9" firstAttribute="top" secondItem="sek-k1-XT4" secondAttribute="top" id="AiH-qv-cbA"/>
+                                        <constraint firstItem="zUB-Fq-R4B" firstAttribute="top" secondItem="sek-k1-XT4" secondAttribute="topMargin" constant="1" id="Akn-zd-etm"/>
+                                        <constraint firstItem="zUB-Fq-R4B" firstAttribute="trailing" secondItem="sek-k1-XT4" secondAttribute="trailingMargin" id="mJE-mQ-uBg"/>
+                                        <constraint firstItem="dLJ-dk-Zz9" firstAttribute="leading" secondItem="sek-k1-XT4" secondAttribute="leadingMargin" id="mNz-6h-Z1I"/>
+                                        <constraint firstItem="zUB-Fq-R4B" firstAttribute="leading" secondItem="dLJ-dk-Zz9" secondAttribute="trailing" constant="8" symbolic="YES" id="usi-N7-ya5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cityImageFav" destination="zUB-Fq-R4B" id="sId-f0-nhE"/>
+                                    <outlet property="cityLabel" destination="dLJ-dk-Zz9" id="bog-DY-hAM"/>
                                     <segue destination="ovx-gN-Ozd" kind="show" identifier="showInfo" id="TLc-cz-g5c"/>
                                 </connections>
                             </tableViewCell>
@@ -54,8 +69,9 @@
                         <outlet property="tableView" destination="4OU-98-Rjt" id="ScE-Bc-nRu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="28"/>
+            <point key="canvasLocation" x="-2.3999999999999999" y="27.436281859070466"/>
         </scene>
         <!--City info-->
         <scene sceneID="KmX-QA-UFE">
@@ -123,5 +139,6 @@
     </scenes>
     <resources>
         <image name="Star_off" width="29" height="28"/>
+        <image name="Star_on" width="29" height="28"/>
     </resources>
 </document>
