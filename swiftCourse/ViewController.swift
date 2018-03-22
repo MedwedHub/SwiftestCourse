@@ -38,8 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! CustomTableViewCell
         let city = Data.shared.cities[indexPath.row]
         let favourite = Data.shared.isFavourite(city: city)
-        //cell.textLabel?.text = "\(city.name)" + " with \(city.id)"
-    
+            
         cell.cityLabel.text = "\(city.name)" + " with \(city.id)"
         cell.cityImageFav.image = UIImage(named: "Star_on")
     
