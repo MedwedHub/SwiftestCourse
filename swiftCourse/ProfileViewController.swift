@@ -34,7 +34,8 @@ class ProfileViewController: UIViewController {
         let dateString: String
         
         if let date = user.birthday {
-            dateString = DateFormatter.string(date)
+            let dateFormatter = DateFormatter()
+            dateString = dateFormatter.string(from: date)
         } else {
             dateString = ""
         }
@@ -53,7 +54,7 @@ class ProfileViewController: UIViewController {
         let date = datePicker.date
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "dd-MM-yyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
         let dateString = dateFormatter.string(from: date)
         
