@@ -8,13 +8,7 @@
 
 import UIKit
 
-extension ProfileViewController: UITextFieldDelegate {
-    func textFieldShouldReturn (_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
-    }
-    
-}
+
 
 class ProfileViewController: UIViewController {
 
@@ -38,9 +32,9 @@ class ProfileViewController: UIViewController {
         nameField.text = user.name
         
         let dateString: String
+        
         if let date = user.birthday {
-            
-            dateString = DateFormatter.string(from: date)
+            dateString = DateFormatter.string(date)
         } else {
             dateString = ""
         }
@@ -86,7 +80,12 @@ class ProfileViewController: UIViewController {
     
    
 }
-
-
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn (_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
+}
 
 
