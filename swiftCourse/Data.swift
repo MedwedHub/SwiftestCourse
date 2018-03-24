@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Data {
-    static let shared = Data()
+class DataCity {
+    static let shared = DataCity()
     
     private init() {}
     
