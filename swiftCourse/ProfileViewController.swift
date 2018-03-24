@@ -12,6 +12,7 @@ import Foundation
 
 class ProfileViewController: UIViewController {
     
+   // @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var birthdayField: UITextField!
@@ -26,7 +27,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         nameField.delegate = self
-        imagePicker.delegate = self
+        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         configurePicker()
         birthdayField.inputView = datePicker
         userManager = UserManager()
@@ -47,7 +48,7 @@ class ProfileViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(onDatePickerChanged), for: UIControlEvents.valueChanged)
         
-        let accView = UIView()
+       let accView = UIView()
         accView.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
         accView.layer.backgroundColor = UIColor.lightGray.cgColor
         
@@ -57,27 +58,21 @@ class ProfileViewController: UIViewController {
         accButton.addTarget(self, action: #selector(onDatePickerDone), for: UIControlEvents.touchUpInside)
         accView.addSubview(accButton)
         birthdayField.inputAccessoryView = accView
-        
-        /*myView.backgroundColor = UIColor.gray
-        myView.inputAccessoryView
-        myButton.titleLabel?.text = "Hello World"
-        //myButton.frame
-        myButton.addTarget(self, action: #selector(), for: UIControlEvents.touchUpInside)*/
     }
     
     @IBAction func avatarSet(_ sender: Any) {
         let alert = UIAlertController(title: "Choose your image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        let gal = UIAlertAction(title: <#T##String?#>, style: <#T##UIAlertActionStyle#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
+        //let gal = UIAlertAction(title: <#T##String?#>, style: <#T##UIAlertActionStyle#>, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
         
-        let galleryButton = UIAlertAction(title: "Galery", style: .default, {(action) in
+        /*let galleryButton = UIAlertAction(title: "Galery", style: .default, {(action) in
             self.present(self.imagePicker, animated: true, completion: nil)
-        })
-        let cameraButton = UIAlertAction(title: "Camera", style: .default, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
-        let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
+        })*/
+        let cameraButton = UIAlertAction(title: "Camera", style: .default)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .default)
         alert.addAction(cameraButton)
         alert.addAction(cancelButton)
-        alert.addAction(galleryButton)
+        //alert.addAction(galleryButton)
         present(alert, animated: true, completion: nil)
     }
     
@@ -89,7 +84,7 @@ class ProfileViewController: UIViewController {
         user.birthday = date
         userManager.change(user: user)
         
-        avatarImage.image = user.avatar
+        //avatarImage.image = user.avatar
         
     }
     @objc func onDatePickerDone(sender: Any) {
@@ -108,13 +103,13 @@ class ProfileViewController: UIViewController {
 }
 extension ProfileViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info["UImagePickerControllerOriginalImage"] as? UIImage
+        /*let image = info["UImagePickerControllerOriginalImage"] as? UIImage
         avatarImage.image = image
         
         user.avatar = image
         userManager.change(user: user)
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)*/
     }
     }
 

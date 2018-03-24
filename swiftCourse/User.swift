@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 struct User {
     var name: String?
@@ -22,10 +23,10 @@ class UserManager {
     let kUserDataAvatar = "keyAvatar"
     
     internal func getCurrentUser() -> User {
-        let name = UserDefaults.standard.string(forKey: kUserName)
-        let birthday = UserDefaults.standard.object(forKey: kUserBirthDay) as? Date
+        let name = defaults.string(forKey: kUserName)
+        let birthday = defaults.object(forKey: kUserBirthDay) as? Date
         var imageAvatar: UIImage? = nil
-        if let dataAvatar = UserDefaults.standard.object(forKey: kUserDataAvatar) as? Data {
+        if let dataAvatar = defaults.object(forKey: kUserDataAvatar) as? Data {
             imageAvatar = UIImage(data: dataAvatar)
         }
         let user = User(name: name, birthday: birthday, avatar: imageAvatar)
@@ -34,11 +35,11 @@ class UserManager {
     }
     
     internal func change(user: User) {
-        UserDefaults.standard.set(user.name, forKey: kUserName)
-        UserDefaults.standard.set(user.birthday, forKey: kUserBirthDay)
+        defaults.set(user.name, forKey: kUserName)
+        defaults.set(user.birthday, forKey: kUserBirthDay)
         if let avatar = user.avatar {
             let dataAvatar = UIImagePNGRepresentation(avatar)
-            UserDefaults.standard.set(dataAvatar, forKey: kUserDataAvatar)
+            defaults.set(dataAvatar, forKey: kUserDataAvatar)
         }
     }
 }

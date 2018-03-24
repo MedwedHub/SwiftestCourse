@@ -15,7 +15,7 @@
 		CE22F35D205A92B2005FDC00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE22F35B205A92B2005FDC00 /* LaunchScreen.storyboard */; };
 		CE22F368205A92B3005FDC00 /* swiftCourseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F367205A92B3005FDC00 /* swiftCourseTests.swift */; };
 		CE22F373205A92B3005FDC00 /* swiftCourseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F372205A92B3005FDC00 /* swiftCourseUITests.swift */; };
-		CE22F381205A9ECE005FDC00 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F380205A9ECE005FDC00 /* Data.swift */; };
+		CE22F381205A9ECE005FDC00 /* DataCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F380205A9ECE005FDC00 /* DataCity.swift */; };
 		CE22F383205A9EF4005FDC00 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F382205A9EF4005FDC00 /* City.swift */; };
 		CE3B40A12063BF5500B4C9AE /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */; };
 		CE3B40A72063CCED00B4C9AE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B40A62063CCED00B4C9AE /* ProfileViewController.swift */; };
@@ -55,7 +55,7 @@
 		CE22F36E205A92B3005FDC00 /* swiftCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE22F372205A92B3005FDC00 /* swiftCourseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftCourseUITests.swift; sourceTree = "<group>"; };
 		CE22F374205A92B3005FDC00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE22F380205A9ECE005FDC00 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		CE22F380205A9ECE005FDC00 /* DataCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCity.swift; sourceTree = "<group>"; };
 		CE22F382205A9EF4005FDC00 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CE3B40A62063CCED00B4C9AE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 				CE62037E205CD99000B6E5FF /* CityViewController.swift */,
 				CE3B40A62063CCED00B4C9AE /* ProfileViewController.swift */,
 				CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */,
-				CE22F380205A9ECE005FDC00 /* Data.swift */,
+				CE22F380205A9ECE005FDC00 /* DataCity.swift */,
 				CE22F382205A9EF4005FDC00 /* City.swift */,
 				CE3B40AA2063D4C100B4C9AE /* User.swift */,
 				CE22F353205A92B2005FDC00 /* Main.storyboard */,
@@ -286,7 +286,7 @@
 				CE3B40A12063BF5500B4C9AE /* CustomTableViewCell.swift in Sources */,
 				CE22F358205A92B2005FDC00 /* swiftCourse.xcdatamodeld in Sources */,
 				CE3B40AB2063D4C100B4C9AE /* User.swift in Sources */,
-				CE22F381205A9ECE005FDC00 /* Data.swift in Sources */,
+				CE22F381205A9ECE005FDC00 /* DataCity.swift in Sources */,
 				CE3B40A72063CCED00B4C9AE /* ProfileViewController.swift in Sources */,
 				CE62037F205CD99000B6E5FF /* CityViewController.swift in Sources */,
 			);
