@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0EA3E5206CFBA2009188C4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EA3E4206CFBA2009188C4 /* UserManager.swift */; };
+		CE0EA3E7206D0BF9009188C4 /* CountryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EA3E6206D0BF9009188C4 /* CountryInfoViewController.swift */; };
+		CE0EA3E9206D0DD8009188C4 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EA3E8206D0DD8009188C4 /* CountryViewController.swift */; };
+		CE0EA3EB206D0E24009188C4 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EA3EA206D0E24009188C4 /* Country.swift */; };
 		CE22F350205A92B2005FDC00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F34F205A92B2005FDC00 /* AppDelegate.swift */; };
 		CE22F352205A92B2005FDC00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22F351205A92B2005FDC00 /* ViewController.swift */; };
 		CE22F355205A92B2005FDC00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE22F353205A92B2005FDC00 /* Main.storyboard */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE0EA3E4206CFBA2009188C4 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		CE0EA3E6206D0BF9009188C4 /* CountryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewController.swift; sourceTree = "<group>"; };
+		CE0EA3E8206D0DD8009188C4 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		CE0EA3EA206D0E24009188C4 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		CE22F34C205A92B2005FDC00 /* swiftCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE22F34F205A92B2005FDC00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE22F351205A92B2005FDC00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +96,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE0EA3EC206D1734009188C4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE22F351205A92B2005FDC00 /* ViewController.swift */,
+				CE3B40A62063CCED00B4C9AE /* ProfileViewController.swift */,
+				CE62037E205CD99000B6E5FF /* CityViewController.swift */,
+				CE0EA3E6206D0BF9009188C4 /* CountryInfoViewController.swift */,
+				CE0EA3E8206D0DD8009188C4 /* CountryViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CE0EA3EE206D175F009188C4 /* Cities & Counrties */ = {
+			isa = PBXGroup;
+			children = (
+				CE22F380205A9ECE005FDC00 /* DataCity.swift */,
+				CE22F382205A9EF4005FDC00 /* City.swift */,
+				CE0EA3EA206D0E24009188C4 /* Country.swift */,
+			);
+			path = "Cities & Counrties";
+			sourceTree = "<group>";
+		};
+		CE0EA3EF206D1783009188C4 /* User & User Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CE0EA3E4206CFBA2009188C4 /* UserManager.swift */,
+				CE3B40AA2063D4C100B4C9AE /* User.swift */,
+			);
+			path = "User & User Manager";
+			sourceTree = "<group>";
+		};
 		CE22F343205A92B2005FDC00 = {
 			isa = PBXGroup;
 			children = (
@@ -112,13 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				CE22F34F205A92B2005FDC00 /* AppDelegate.swift */,
-				CE22F351205A92B2005FDC00 /* ViewController.swift */,
-				CE62037E205CD99000B6E5FF /* CityViewController.swift */,
-				CE3B40A62063CCED00B4C9AE /* ProfileViewController.swift */,
 				CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */,
-				CE22F380205A9ECE005FDC00 /* DataCity.swift */,
-				CE22F382205A9EF4005FDC00 /* City.swift */,
-				CE3B40AA2063D4C100B4C9AE /* User.swift */,
+				CE0EA3EF206D1783009188C4 /* User & User Manager */,
+				CE0EA3EE206D175F009188C4 /* Cities & Counrties */,
+				CE0EA3EC206D1734009188C4 /* ViewControllers */,
 				CE22F353205A92B2005FDC00 /* Main.storyboard */,
 				CE22F359205A92B2005FDC00 /* Assets.xcassets */,
 				CE22F35B205A92B2005FDC00 /* LaunchScreen.storyboard */,
@@ -284,10 +320,14 @@
 				CE22F383205A9EF4005FDC00 /* City.swift in Sources */,
 				CE22F350205A92B2005FDC00 /* AppDelegate.swift in Sources */,
 				CE3B40A12063BF5500B4C9AE /* CustomTableViewCell.swift in Sources */,
+				CE0EA3EB206D0E24009188C4 /* Country.swift in Sources */,
 				CE22F358205A92B2005FDC00 /* swiftCourse.xcdatamodeld in Sources */,
+				CE0EA3E7206D0BF9009188C4 /* CountryInfoViewController.swift in Sources */,
 				CE3B40AB2063D4C100B4C9AE /* User.swift in Sources */,
 				CE22F381205A9ECE005FDC00 /* DataCity.swift in Sources */,
 				CE3B40A72063CCED00B4C9AE /* ProfileViewController.swift in Sources */,
+				CE0EA3E9206D0DD8009188C4 /* CountryViewController.swift in Sources */,
+				CE0EA3E5206CFBA2009188C4 /* UserManager.swift in Sources */,
 				CE62037F205CD99000B6E5FF /* CityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,19 +18,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         DataCity.shared.appendCity()
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-    }
-    
+    }    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataCity.shared.cities.count
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45.0
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! CustomTableViewCell
         let city = DataCity.shared.cities[indexPath.row]
@@ -45,7 +41,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return cell
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cityVC: CityViewController? = segue.destination as? CityViewController
         let indexPath = tableView.indexPathForSelectedRow
