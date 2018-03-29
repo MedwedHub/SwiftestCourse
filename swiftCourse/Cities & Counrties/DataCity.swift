@@ -11,29 +11,29 @@ import Foundation
 class DataCity {
     static let shared = DataCity()
     private init() {}
-    //private var country: Country?
-    internal var cities = [City]() // поместить в функцию
+    private var country: Country?
+    //internal var cities = [City]() // поместить в функцию
     private var favouriteCities = [City]()
     
-    func appendCity() /*-> [City] */{ //сделать fileprivate
-        //var cities = [City]()
+    fileprivate func appendCity() -> [City] { //сделать fileprivate
+        var cities = [City]()
         for i in 0..<50 {
             cities.append(City(name: "City \(i)", id: " id = \(UUID().uuidString)"))
         }
-       // return cities
+        return cities
     }
-    /*internal func getCounrty() -> Country {
-        if ler c = country {
+    internal func getCountry() -> Country {
+        if let c = country {
             return c
         } else {
             let id = UUID().uuidString
             let cities = appendCity()
             let capital = cities.first!
-            let c = Country(id:, name:, capital:)
+            let c = Country(id: id, name: "City", capital: capital, cities: cities)
             country = cities
             return country
         }
-    }*/
+    }
     internal func isFavourite(city: City) -> Bool {
         for favorite in favouriteCities {
             if favorite.id == city.id {

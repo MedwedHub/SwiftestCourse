@@ -12,5 +12,5 @@ struct Country {
     let id: String?
     let name: String?
     let capital: String?
-    //let cities: Country?
+    let cities: City?
 }
