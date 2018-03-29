@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="-2018" y="334"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="nBj-Jv-6Bh">
             <objects>
                 <viewController id="yRA-rD-dZz" customClass="ProfileViewController" customModule="swiftCourse" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,7 +150,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oG4-nj-ON4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" selectedImage="Star_on" systemItem="contacts" id="VaY-aX-EFm"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_off" selectedImage="profile_on" id="VaY-aX-EFm"/>
                     <connections>
                         <outlet property="avatarImage" destination="E22-xX-ZuX" id="tSz-Ub-9Zo"/>
                         <outlet property="birthdayField" destination="uX1-WR-6Gj" id="DRq-gs-kBM"/>
@@ -253,11 +253,11 @@
             </objects>
             <point key="canvasLocation" x="1032.8" y="27.436281859070466"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Cities-->
         <scene sceneID="4eF-lN-6yu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="syt-Ue-E9P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="HHd-tr-iLQ" userLabel="Cities"/>
+                    <tabBarItem key="tabBarItem" title="Cities" image="list_off" selectedImage="list_on" id="HHd-tr-iLQ" userLabel="Cities"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7bu-gv-zcs">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -304,5 +304,9 @@
     <resources>
         <image name="Star_off" width="29" height="28"/>
         <image name="Star_on" width="29" height="28"/>
+        <image name="list_off" width="41" height="41"/>
+        <image name="list_on" width="41" height="41"/>
+        <image name="profile_off" width="41" height="41"/>
+        <image name="profile_on" width="41" height="41"/>
     </resources>
 </document>

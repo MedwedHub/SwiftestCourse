@@ -41,6 +41,11 @@ class ProfileViewController: UIViewController {
         birthdayField.text = dateString
         avatarImage.image = userManager.user.avatar
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.letters
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
     func configurePicker() {
         datePicker = UIDatePicker(frame: CGRect.zero)
         datePicker.datePickerMode = .date
