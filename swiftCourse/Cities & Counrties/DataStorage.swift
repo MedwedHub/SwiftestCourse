@@ -8,16 +8,17 @@
 
 import Foundation
 
-class DataCity {
+class DataStorage {
     static let shared = DataCity()
     private init() {}
-    private var country: Country?
-    //internal var cities = [City]() // поместить в функцию
+    
+    var country: Country?
     private var favouriteCities = [City]()
     
-    fileprivate func appendCity() -> [City] { //сделать fileprivate
+    fileprivate func appendCity() -> [City] {
         var cities = [City]()
-        for i in 0..<50 {
+        let rand = arc4random_uniform(50)
+        for i in 0..<rand {
             cities.append(City(name: "City \(i)", id: " id = \(UUID().uuidString)"))
         }
         return cities
@@ -29,9 +30,8 @@ class DataCity {
             let id = UUID().uuidString
             let cities = appendCity()
             let capital = cities.first!
-            let c = Country(id: id, name: "City", capital: capital, cities: cities)
-            country = cities
-            return country
+            let c = Country(id: id, name: "Uganda", capital: capital.name, cities: cities)
+            return c
         }
     }
     internal func isFavourite(city: City) -> Bool {

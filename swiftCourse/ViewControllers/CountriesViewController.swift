@@ -11,7 +11,7 @@ import UIKit
 class CountriesViewController: UIViewController {
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var cityView: UIView!
-    private let country = DataCity.shared.getCountry()
+    private let country = DataStorage.shared.getCountry()
     
     override func viewDidLoad() {
         super.viewDidLoad()

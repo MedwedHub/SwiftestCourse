@@ -22,13 +22,13 @@ class CityViewController: UIViewController {
         updateUI()
     }
     @IBAction func pressButton(_ sender: Any) {
-        DataCity.shared.changeFavourite(for: city)
+        DataStorage.shared.changeFavourite(for: city)
         updateUI()
     }
     
     
     private func updateUI() {
-        let favorite = DataCity.shared.isFavourite(city: city)
+        let favorite = DataStorage.shared.isFavourite(city: city)
         let image: UIImage
         
         if favorite {
