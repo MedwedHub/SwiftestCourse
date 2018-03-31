@@ -8,8 +8,7 @@
 
 import UIKit
 
-class CityViewController: UIViewController {
-    
+class CityViewController: UIViewController {    
     @IBOutlet weak var cityLabel: UILabel!
     internal var city: City!
     
@@ -25,8 +24,6 @@ class CityViewController: UIViewController {
         DataStorage.shared.changeFavourite(for: city)
         updateUI()
     }
-    
-    
     private func updateUI() {
         let favorite = DataStorage.shared.isFavourite(city: city)
         let image: UIImage

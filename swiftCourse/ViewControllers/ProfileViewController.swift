@@ -9,12 +9,10 @@
 import UIKit
 import Foundation
 
-
 class ProfileViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var birthdayField: UITextField!
-    @IBOutlet weak var avatarImage: UIImageView!
-    
+    @IBOutlet weak var avatarImage: UIImageView!    
    // @IBOutlet weak var scrollView: UIScrollView!
     private var datePicker: UIDatePicker!
     private var userManager: UserManager!
