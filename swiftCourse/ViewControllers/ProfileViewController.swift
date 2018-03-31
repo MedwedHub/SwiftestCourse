@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var birthdayField: UITextField!
     @IBOutlet weak var avatarImage: UIImageView!
     
+   // @IBOutlet weak var scrollView: UIScrollView!
     private var datePicker: UIDatePicker!
     private var userManager: UserManager!
     //private var user: User!
@@ -41,6 +42,10 @@ class ProfileViewController: UIViewController {
         birthdayField.text = dateString
         avatarImage.image = userManager.user.avatar
     }
+    /*private func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }*/
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.letters
         let characterSet = CharacterSet(charactersIn: string)
@@ -67,6 +72,22 @@ class ProfileViewController: UIViewController {
         avatarImage.layer.borderWidth = 2
         avatarImage.layer.masksToBounds = true
     }
+  /*  @objc func keyBoardWillShow(notifications: NSNotification) {
+        if let keyboardFrame = (notifications.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            var inset = scrollView.contentInset
+            inset.bottom = keyboardFrame.size.height
+            scrollView.isScrollEnabled = true
+            scrollView.contentInset = inset
+        }
+        print("test")
+    }
+     @objc func keyBoardWillHide(notifications: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.contentOffset = CGPoint.zero
+        //scrollView.scrollsToTop = true
+        scrollView.isScrollEnabled = true
+        print("test")
+    }*/
     @IBAction func avatarSet(_ sender: Any) {
         let alert = UIAlertController(title: "Choose your image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
    

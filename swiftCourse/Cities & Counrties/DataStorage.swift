@@ -9,7 +9,7 @@
 import Foundation
 
 class DataStorage {
-    static let shared = DataCity()
+    static let shared = DataStorage()
     private init() {}
     
     var country: Country?
