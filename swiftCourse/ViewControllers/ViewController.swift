@@ -32,15 +32,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! CustomTableViewCell
         /*if let city = DataCity.shared.country?.cities![indexPath.row]*/
-          let city = country.cities![indexPath.row]
-          let favourite = DataStorage.shared.isFavourite(city: city)
-          cell.cityLabel.text = "\(city.name)" + " with \(city.id)"
-          cell.cityImageFav.image = UIImage(named: "Star_on")
-          if !favourite {
-              cell.cityImageFav.isHidden = true
-          } else {
-              cell.cityImageFav.isHidden = false
-          }
+        let city = country.cities![indexPath.row]
+        let favourite = DataStorage.shared.isFavourite(city: city)
+        cell.cityLabel.text = "\(city.name)" + " with \(city.id)"
+        cell.cityImageFav.image = UIImage(named: "Star_on")
+        cell.cityImageFav.isHidden = !favourite ? true : false
         return cell
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

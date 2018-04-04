@@ -13,11 +13,12 @@ class DataStorage {
     private init() {}
     
     var country: Country?
-    private var favouriteCities = [City]()
+    //private var favouriteCities = [City]()
+    var favouriteCities = [City]()
     
     fileprivate func appendCity() -> [City] {
         var cities = [City]()
-        let rand = arc4random_uniform(50)
+        let rand = arc4random_uniform(50) + 5
         for i in 0..<rand {
             cities.append(City(name: "City \(i)", id: " id = \(UUID().uuidString)"))
         }

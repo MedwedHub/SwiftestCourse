@@ -22,21 +22,31 @@ class FavouritesCitiesViewController: UIViewController, UITableViewDelegate, UIT
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return DataStorage.shared.favouriteCities.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45.0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = favTableView.dequeueReusableCell(withIdentifier: "FavCityCell") as! CustomTableViewCell
+        let cell = favTableView.dequeueReusableCell(withIdentifier: "FavCityCell", for: indexPath) as! FavCustomTableViewCell
+        let favCity = DataStorage.shared.favouriteCities[indexPath.row]
+        cell.favCityLabel.text = "\(favCity.name)" + " with \(favCity.id)"
         return cell
     }
-   /* func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
+ }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        <#code#>
-    }*/
+        let favCity = DataStorage.shared.favouriteCities[indexPath.row]
+        DataStorage.shared.removeCity(city: favCity)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cityVC = segue.destination as? CityViewController
+        let indexPath = favTableView.indexPathForSelectedRow
+        let city = DataStorage.shared.favouriteCities[indexPath!.row]
+        cityVC?.city = city
+    }
     
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,5 +54,5 @@ class FavouritesCitiesViewController: UIViewController, UITableViewDelegate, UIT
     }
     override func viewWillAppear(_ animated: Bool) {
         favTableView.reloadData()
-    }    
+    }
 }

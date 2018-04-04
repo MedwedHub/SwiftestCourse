@@ -10,13 +10,12 @@ import UIKit
 import Foundation
 
 class ProfileViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var birthdayField: UITextField!
-    @IBOutlet weak var avatarImage: UIImageView!    
-   // @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var avatarImage: UIImageView!
     private var datePicker: UIDatePicker!
     private var userManager: UserManager!
-    //private var user: User!
     private let imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
@@ -28,9 +27,11 @@ class ProfileViewController: UIViewController {
         birthdayField.inputView = datePicker
         userManager = UserManager()
         nameField.text = userManager.user.name
+        setupNotifications()
         
         let dateString: String
         if let date = userManager.user.birthDay {
+            datePicker.date = date
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             dateString = dateFormatter.string(from: date)
@@ -39,15 +40,18 @@ class ProfileViewController: UIViewController {
         }        
         birthdayField.text = dateString
         avatarImage.image = userManager.user.avatar
+        
     }
-    /*private func setupNotifications() {
+    
+    private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    }*/
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.letters
+        let allowedWhitespaces = CharacterSet.whitespaces
         let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+        return allowedCharacters.isSuperset(of: characterSet) || allowedWhitespaces.isSuperset(of: characterSet)
     }
     func configurePicker() {
         datePicker = UIDatePicker(frame: CGRect.zero)
@@ -60,7 +64,7 @@ class ProfileViewController: UIViewController {
         
         let accButton = UIButton()
         accButton.setTitle("Done", for: .normal)
-        accButton.frame = CGRect(x: self.view.frame.width - 70, y: 10, width: 50, height: 20)
+        accButton.frame = CGRect(x: self.view.frame.width - 70, y: 10, width: 50, height: 10)
         accButton.addTarget(self, action: #selector(onDatePickerDone), for: UIControlEvents.touchUpInside)
         accView.addSubview(accButton)
         birthdayField.inputAccessoryView = accView
@@ -70,22 +74,23 @@ class ProfileViewController: UIViewController {
         avatarImage.layer.borderWidth = 2
         avatarImage.layer.masksToBounds = true
     }
-  /*  @objc func keyBoardWillShow(notifications: NSNotification) {
+    @objc func keyBoardWillShow(notifications: NSNotification) {
         if let keyboardFrame = (notifications.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             var inset = scrollView.contentInset
             inset.bottom = keyboardFrame.size.height
             scrollView.isScrollEnabled = true
             scrollView.contentInset = inset
+            print(inset.bottom)
         }
-        print("test")
+        
     }
      @objc func keyBoardWillHide(notifications: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.contentOffset = CGPoint.zero
         //scrollView.scrollsToTop = true
         scrollView.isScrollEnabled = true
-        print("test")
-    }*/
+        print("test2")
+    }
     @IBAction func avatarSet(_ sender: Any) {
         let alert = UIAlertController(title: "Choose your image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
    
@@ -93,9 +98,9 @@ class ProfileViewController: UIViewController {
             self.present(self.imagePicker, animated: true, completion: nil)})
         let cameraButton = UIAlertAction(title: "Camera", style: .default)
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(galleryButton)
         alert.addAction(cameraButton)
         alert.addAction(cancelButton)
-        alert.addAction(galleryButton)
         present(alert, animated: true, completion: nil)
     }
     @objc func onDatePickerChanged(datePicker: UIDatePicker) {
