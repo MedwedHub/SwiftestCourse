@@ -39,7 +39,21 @@ class ProfileViewController: UIViewController {
             dateString = ""
         }        
         birthdayField.text = dateString
-        avatarImage.image = userManager.user.avatar
+        //avatarImage.image = userManager.user.avatar
+        
+        DispatchQueue.main.async {
+            self.avatarImage.image = self.userManager.user.avatar
+        }
+        
+        /*let queue = DispatchQueue.global()
+        queue.async {
+            DispatchQueue.main.async {
+                self.avatarImage.image = self.userManager.user.avatar
+                print("Dispatch main!")
+            }
+            print("Dispatch!")
+       }*/
+        
         
     }
     

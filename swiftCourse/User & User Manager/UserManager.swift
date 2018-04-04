@@ -11,9 +11,9 @@ import Foundation
 
 class UserManager {
     private let defaults = UserDefaults.standard
-    let kUserName = "userNameKey"
-    let kUserBirthDay = "userBirthDayKey"
-    let kUserDataAvatar = "keyAvatar"
+    private let kUserName = "userNameKey"
+    private let kUserBirthDay = "userBirthDayKey"
+    private let kUserDataAvatar = "keyAvatar"
     //var delegate: UserManagerDelegate?
     var user: User {
         get {
@@ -21,7 +21,7 @@ class UserManager {
             let birthDay = defaults.object(forKey: kUserBirthDay) as? Date
             var imageAvatar: UIImage? = nil
             if let dataAvatar = defaults.object(forKey: kUserDataAvatar) as? Data {
-                imageAvatar = UIImage(data: dataAvatar)
+                    imageAvatar = UIImage(data: dataAvatar)
             }
             let user = User(name: name, birthDay: birthDay, avatar: imageAvatar)
             
@@ -32,8 +32,8 @@ class UserManager {
             defaults.set(newValue.name, forKey: kUserName)
             defaults.set(newValue.birthDay, forKey: kUserBirthDay)
             if let avatar = newValue.avatar {
-                let dataAvatar = UIImagePNGRepresentation(avatar)
-                defaults.set(dataAvatar, forKey: kUserDataAvatar)
+                    let dataAvatar = UIImagePNGRepresentation(avatar)
+                    defaults.set(dataAvatar, forKey: self.kUserDataAvatar)
             }
         }
     }
