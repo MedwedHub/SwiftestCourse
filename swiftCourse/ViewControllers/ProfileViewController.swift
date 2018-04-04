@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
     private var datePicker: UIDatePicker!
     private var userManager: UserManager!
     private let imagePicker = UIImagePickerController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,37 +26,35 @@ class ProfileViewController: UIViewController {
         configurePicker()
         birthdayField.inputView = datePicker
         userManager = UserManager()
-        nameField.text = userManager.user.name
+
+        
         setupNotifications()
         
-        let dateString: String
-        if let date = userManager.user.birthDay {
-            datePicker.date = date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-            dateString = dateFormatter.string(from: date)
-        } else {
-            dateString = ""
-        }        
-        birthdayField.text = dateString
+
         //avatarImage.image = userManager.user.avatar
-        
         DispatchQueue.main.async {
+            self.nameField.text = self.userManager.user.name
+            let dateString: String
+            if let date = self.userManager.user.birthDay {
+                self.datePicker.date = date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                dateString = dateFormatter.string(from: date)
+            } else {
+                dateString = ""
+            }
+            self.birthdayField.text = dateString
             self.avatarImage.image = self.userManager.user.avatar
         }
-        
         /*let queue = DispatchQueue.global()
-        queue.async {
-            DispatchQueue.main.async {
-                self.avatarImage.image = self.userManager.user.avatar
-                print("Dispatch main!")
-            }
-            print("Dispatch!")
-       }*/
-        
-        
+         queue.async {
+         DispatchQueue.main.async {
+         self.avatarImage.image = self.userManager.user.avatar
+         print("Dispatch main!")
+         }
+         print("Dispatch!")
+         }*/
     }
-    
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -72,7 +70,7 @@ class ProfileViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(onDatePickerChanged), for: UIControlEvents.valueChanged)
         
-       let accView = UIView()
+        let accView = UIView()
         accView.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
         accView.layer.backgroundColor = UIColor.lightGray.cgColor
         
@@ -94,20 +92,18 @@ class ProfileViewController: UIViewController {
             inset.bottom = keyboardFrame.size.height
             scrollView.isScrollEnabled = true
             scrollView.contentInset = inset
-            print(inset.bottom)
         }
         
     }
-     @objc func keyBoardWillHide(notifications: NSNotification) {
+    @objc func keyBoardWillHide(notifications: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.contentOffset = CGPoint.zero
         //scrollView.scrollsToTop = true
         scrollView.isScrollEnabled = true
-        print("test2")
     }
     @IBAction func avatarSet(_ sender: Any) {
         let alert = UIAlertController(title: "Choose your image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-   
+        
         let galleryButton = UIAlertAction(title: "Gallery", style: .default, handler: {(action) in
             self.present(self.imagePicker, animated: true, completion: nil)})
         let cameraButton = UIAlertAction(title: "Camera", style: .default)
@@ -147,9 +143,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 extension ProfileViewController: UITextFieldDelegate {
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.endEditing(true)
-            return true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
 }
 
