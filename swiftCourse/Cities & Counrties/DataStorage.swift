@@ -21,7 +21,8 @@ class DataStorage {
         var cities = [City]()
         let rand = arc4random_uniform(50) + 5
         for i in 0..<rand {
-            cities.append(City(name: "City \(i)", id: " id = \(UUID().uuidString)"))
+           // cities.append(City(name: "City \(i)", id: " id = \(UUID().uuidString)"))
+            cities.append(City(name: "City \(i) with id: ", id: "\(i)"))
         }
         return cities
     }
@@ -32,7 +33,7 @@ class DataStorage {
             let id = UUID().uuidString
             let cities = appendCity()
             let capital = cities.first!
-            let c = Country(id: id, name: "Uganda", capital: capital.name, cities: cities)
+            let c = Country(id: id, name: "Uganda", capital: capital.name + " \(capital.id)", cities: cities)
             return c
         }
     }

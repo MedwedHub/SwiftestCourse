@@ -43,5 +43,8 @@ extension CityViewController: DataStorageDelegate {
         if city.name == self.city.name {
             updateUI(for: !favourite)
         }
+        DataStorage.shared.favouriteCities.sort { (city1, city2) -> Bool in
+            return Int(city1.id)! < Int(city2.id)!
+        }
     }
 }
