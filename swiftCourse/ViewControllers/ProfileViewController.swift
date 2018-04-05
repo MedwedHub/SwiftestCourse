@@ -27,17 +27,14 @@ class ProfileViewController: UIViewController {
         birthdayField.inputView = datePicker
         userManager = UserManager()
         userManager.delegate = self
-        
         setupNotifications()
         
-
-        //avatarImage.image = userManager.user.avatar
         DispatchQueue.global().async {
-            print("global")
+            let myUser = self.userManager.user
             DispatchQueue.main.async {
-                self.nameField.text = self.userManager.user.name
+                self.nameField.text = myUser.name
                 let dateString: String
-                if let date = self.userManager.user.birthDay {
+                if let date = myUser.birthDay {
                     self.datePicker.date = date
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -46,18 +43,9 @@ class ProfileViewController: UIViewController {
                     dateString = ""
                 }
                 self.birthdayField.text = dateString
-                self.avatarImage.image = self.userManager.user.avatar
+                self.avatarImage.image = myUser.avatar
             }
         }
-        
-        /*let queue = DispatchQueue.global()
-         queue.async {
-         DispatchQueue.main.async {
-         self.avatarImage.image = self.userManager.user.avatar
-         print("Dispatch main!")
-         }
-         print("Dispatch!")
-         }*/
     }
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

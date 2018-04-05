@@ -28,7 +28,6 @@ class UserManager {
             
             return user
         }
-        
         set {
             defaults.set(newValue.name, forKey: kUserName)
             defaults.set(newValue.birthDay, forKey: kUserBirthDay)
