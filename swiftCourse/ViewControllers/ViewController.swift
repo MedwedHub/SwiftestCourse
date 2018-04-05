@@ -34,7 +34,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         /*if let city = DataCity.shared.country?.cities![indexPath.row]*/
         let city = country.cities![indexPath.row]
         let favourite = DataStorage.shared.isFavourite(city: city)
-        cell.cityLabel.text = "\(city.name)" + " with \(city.id)"
+        //cell.cityLabel.text = "\(city.name)" + " with \(city.id)"
+        cell.cityLabel.text = "\(city.name)" + "\(city.id)"
         cell.cityImageFav.image = UIImage(named: "Star_on")
         cell.cityImageFav.isHidden = !favourite ? true : false
         return cell

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rHS-dB-kp8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rHS-dB-kp8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -107,8 +107,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OY-Ur-qjG">
-                                                <rect key="frame" x="266" y="293" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="212" y="293" width="100" height="30"/>
+                                                <state key="normal" title="Change avatar"/>
                                                 <connections>
                                                     <action selector="avatarSet:" destination="yRA-rD-dZz" eventType="touchUpInside" id="tML-vf-Rgu"/>
                                                 </connections>
@@ -309,7 +309,7 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3e0-cA-EDe">
-                                <rect key="frame" x="63" y="59" width="249" height="36"/>
+                                <rect key="frame" x="63" y="64" width="249" height="36"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-Oj-EIb">
                                         <rect key="frame" x="8" y="4" width="240" height="29"/>
@@ -330,11 +330,11 @@
                         <constraints>
                             <constraint firstItem="7JS-7H-vnM" firstAttribute="top" secondItem="rRi-qo-del" secondAttribute="top" id="3Ec-cV-wGk"/>
                             <constraint firstItem="7JS-7H-vnM" firstAttribute="centerX" secondItem="3e0-cA-EDe" secondAttribute="centerX" id="46U-D4-aa8"/>
-                            <constraint firstItem="7JS-7H-vnM" firstAttribute="top" secondItem="3e0-cA-EDe" secondAttribute="bottom" constant="5" id="6Os-Ux-68E"/>
+                            <constraint firstItem="7JS-7H-vnM" firstAttribute="top" secondItem="3e0-cA-EDe" secondAttribute="bottom" id="6Os-Ux-68E"/>
                             <constraint firstItem="7JS-7H-vnM" firstAttribute="top" secondItem="0GF-Tv-cgb" secondAttribute="top" constant="100" id="9Fr-hS-kda"/>
                             <constraint firstItem="3e0-cA-EDe" firstAttribute="leading" secondItem="vNG-BP-2su" secondAttribute="leading" constant="63" id="BpS-hp-yPL"/>
                             <constraint firstItem="7JS-7H-vnM" firstAttribute="leading" secondItem="rRi-qo-del" secondAttribute="leading" id="Cba-MC-8lo"/>
-                            <constraint firstItem="3e0-cA-EDe" firstAttribute="top" secondItem="vNG-BP-2su" secondAttribute="top" constant="-5" id="TxU-ue-06G"/>
+                            <constraint firstItem="3e0-cA-EDe" firstAttribute="top" secondItem="vNG-BP-2su" secondAttribute="top" id="TxU-ue-06G"/>
                             <constraint firstItem="7JS-7H-vnM" firstAttribute="trailing" secondItem="rRi-qo-del" secondAttribute="trailing" id="dhB-pr-pXf"/>
                             <constraint firstItem="7JS-7H-vnM" firstAttribute="bottom" secondItem="rRi-qo-del" secondAttribute="bottom" id="g1t-g6-dgh"/>
                             <constraint firstItem="7JS-7H-vnM" firstAttribute="leading" secondItem="0GF-Tv-cgb" secondAttribute="leading" id="kho-RB-izj"/>
@@ -372,7 +372,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi9-PT-IqJ">
                                 <rect key="frame" x="16" y="99" width="343" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -386,7 +386,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hJ-fb-7pG">
                                 <rect key="frame" x="16" y="232" width="343" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Bold" family="Rockwell" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

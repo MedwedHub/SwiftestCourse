@@ -30,7 +30,8 @@ class FavouritesCitiesViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favTableView.dequeueReusableCell(withIdentifier: "FavCityCell", for: indexPath) as! FavCustomTableViewCell
         let favCity = DataStorage.shared.favouriteCities[indexPath.row]
-        cell.favCityLabel.text = "\(favCity.name)" + " with \(favCity.id)"
+        //cell.favCityLabel.text = "\(favCity.name)" + " with \(favCity.id)"
+        cell.favCityLabel.text = "\(favCity.name)" + "\(favCity.id)"
         return cell
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

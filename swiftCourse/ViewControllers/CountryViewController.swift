@@ -23,11 +23,9 @@ class CountryViewController: UIViewController {
         updateUI(0)
         // Do any additional setup after loading the view.
     }
-    
     @IBAction func segmentedSwitch(_ sender: Any) {
         updateUI(segmentedState.selectedSegmentIndex)
     }
-    
     fileprivate func updateUI(_ state: Int){
         switch state {
         case 0:
@@ -39,10 +37,7 @@ class CountryViewController: UIViewController {
         default:
             print("SegmentedSwitch error")
         }
-
     }
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -14,31 +14,29 @@ class UserManager {
     private let kUserName = "userNameKey"
     private let kUserBirthDay = "userBirthDayKey"
     private let kUserDataAvatar = "keyAvatar"
-    var delegate: UserManagerDelegate!
+    weak var delegate: UserManagerDelegate?
     var user: User {
         get {
             let name = defaults.string(forKey: kUserName)
             let birthDay = defaults.object(forKey: kUserBirthDay) as? Date
             var imageAvatar: UIImage? = nil
             if let dataAvatar = defaults.object(forKey: kUserDataAvatar) as? Data {
-                        imageAvatar = UIImage(data: dataAvatar)
-                        print("created")
+                imageAvatar = UIImage(data: dataAvatar)
             }
             let user = User(name: name, birthDay: birthDay, avatar: imageAvatar)
-            
             return user
         }
         set {
             defaults.set(newValue.name, forKey: kUserName)
             defaults.set(newValue.birthDay, forKey: kUserBirthDay)
             if let avatar = newValue.avatar {
-                    let dataAvatar = UIImagePNGRepresentation(avatar)
-                    defaults.set(dataAvatar, forKey: self.kUserDataAvatar)
+                let dataAvatar = UIImagePNGRepresentation(avatar)
+                defaults.set(dataAvatar, forKey: kUserDataAvatar)
             }
-            delegate?.uiDidChange()
+            delegate?.cityFavouriteChanged()
         }
     }
 }
-protocol UserManagerDelegate {
-    func uiDidChange()
+protocol UserManagerDelegate: class {
+    func cityFavouriteChanged()
 }
