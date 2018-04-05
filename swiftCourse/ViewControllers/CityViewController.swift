@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CityViewController: UIViewController {    
+class CityViewController: UIViewController {
+    
     @IBOutlet weak var cityLabel: UILabel!
     internal var city: City!
     

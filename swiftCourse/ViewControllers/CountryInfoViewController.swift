@@ -9,6 +9,7 @@
 import UIKit
 
 class CountryInfoViewController: UIViewController {
+    
     @IBOutlet weak var capital: UILabel!
     @IBOutlet weak var countryName: UILabel!
     

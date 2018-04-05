@@ -9,6 +9,7 @@
 import UIKit
 
 class CountryViewController: UIViewController {
+    
     @IBOutlet weak var segmentedState: UISegmentedControl!
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var citiesView: UIView!
