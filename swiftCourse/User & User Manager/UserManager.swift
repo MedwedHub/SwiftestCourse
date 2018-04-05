@@ -14,14 +14,15 @@ class UserManager {
     private let kUserName = "userNameKey"
     private let kUserBirthDay = "userBirthDayKey"
     private let kUserDataAvatar = "keyAvatar"
-    //var delegate: UserManagerDelegate?
+    var delegate: UserManagerDelegate!
     var user: User {
         get {
             let name = defaults.string(forKey: kUserName)
             let birthDay = defaults.object(forKey: kUserBirthDay) as? Date
             var imageAvatar: UIImage? = nil
             if let dataAvatar = defaults.object(forKey: kUserDataAvatar) as? Data {
-                    imageAvatar = UIImage(data: dataAvatar)
+                        imageAvatar = UIImage(data: dataAvatar)
+                        print("created")
             }
             let user = User(name: name, birthDay: birthDay, avatar: imageAvatar)
             
@@ -35,6 +36,10 @@ class UserManager {
                     let dataAvatar = UIImagePNGRepresentation(avatar)
                     defaults.set(dataAvatar, forKey: self.kUserDataAvatar)
             }
+            delegate?.uiDidChange()
         }
     }
+}
+protocol UserManagerDelegate {
+    func uiDidChange()
 }

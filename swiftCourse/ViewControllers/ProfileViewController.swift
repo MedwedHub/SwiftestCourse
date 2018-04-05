@@ -26,26 +26,30 @@ class ProfileViewController: UIViewController {
         configurePicker()
         birthdayField.inputView = datePicker
         userManager = UserManager()
-
+        userManager.delegate = self
         
         setupNotifications()
         
 
         //avatarImage.image = userManager.user.avatar
-        DispatchQueue.main.async {
-            self.nameField.text = self.userManager.user.name
-            let dateString: String
-            if let date = self.userManager.user.birthDay {
-                self.datePicker.date = date
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd-MM-yyyy"
-                dateString = dateFormatter.string(from: date)
-            } else {
-                dateString = ""
+        DispatchQueue.global().async {
+            print("global")
+            DispatchQueue.main.async {
+                self.nameField.text = self.userManager.user.name
+                let dateString: String
+                if let date = self.userManager.user.birthDay {
+                    self.datePicker.date = date
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd-MM-yyyy"
+                    dateString = dateFormatter.string(from: date)
+                } else {
+                    dateString = ""
+                }
+                self.birthdayField.text = dateString
+                self.avatarImage.image = self.userManager.user.avatar
             }
-            self.birthdayField.text = dateString
-            self.avatarImage.image = self.userManager.user.avatar
         }
+        
         /*let queue = DispatchQueue.global()
          queue.async {
          DispatchQueue.main.async {
@@ -148,5 +152,9 @@ extension ProfileViewController: UITextFieldDelegate {
         return true
     }
 }
-
+extension ProfileViewController: UserManagerDelegate {
+    func uiDidChange() {
+        print("Hey, UI did changed! Let`s do something!")
+    }
+}
 
