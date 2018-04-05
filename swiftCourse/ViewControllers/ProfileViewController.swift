@@ -31,6 +31,12 @@ class ProfileViewController: UIViewController {
         setupNotifications()
         
         DispatchQueue.global().async {
+            let newUser = self.userManager.user
+            DispatchQueue.main.async {
+                self.configureUI(newUser)
+            }
+        }
+        /*DispatchQueue.global().async {
             let myUser = self.userManager.user
             DispatchQueue.main.async {
                 self.nameField.text = myUser.name
@@ -46,7 +52,21 @@ class ProfileViewController: UIViewController {
                 self.birthdayField.text = dateString
                 self.avatarImage.image = myUser.avatar
             }
+        }*/
+    }
+    func configureUI(_ myUser: User) {
+        avatarImage.image = myUser.avatar
+        nameField.text = myUser.name
+        let dateString: String
+        if let date = myUser.birthDay {
+            self.datePicker.date = date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            dateString = dateFormatter.string(from: date)
+        } else {
+            dateString = ""
         }
+        birthdayField.text = dateString
     }
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -86,7 +106,6 @@ class ProfileViewController: UIViewController {
             scrollView.isScrollEnabled = true
             scrollView.contentInset = inset
         }
-        
     }
     @objc func keyBoardWillHide(notifications: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
@@ -141,7 +160,7 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 }
 extension ProfileViewController: UserManagerDelegate {
-    func uiDidChange() {
+    func cityFavouriteChanged() {
         print("Hey, UI did changed! Let`s do something!")
     }
 }

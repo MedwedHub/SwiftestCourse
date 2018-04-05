@@ -9,6 +9,7 @@
 import Foundation
 
 class DataStorage {
+    weak var delegate: DataStorageDelegate?
     static let shared = DataStorage()
     private init() {}
     
@@ -50,6 +51,7 @@ class DataStorage {
         } else {
             favouriteCities.append(city)
         }
+        delegate?.cityFavouriteChanged(city, exist)
     }
     internal func removeCity(city: City) {
         for favourite in favouriteCities {
@@ -60,4 +62,7 @@ class DataStorage {
             }
         }
     }
+}
+protocol DataStorageDelegate: class {
+    func cityFavouriteChanged(_ city: City, _ favourite: Bool)
 }

@@ -16,24 +16,32 @@ class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cityLabel.text = city.name
-        
+        DataStorage.shared.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        updateUI()
+        let favourite = DataStorage.shared.isFavourite(city: city)
+        updateUI(for: favourite)
     }
     @IBAction func pressButton(_ sender: Any) {
         DataStorage.shared.changeFavourite(for: city)
-        updateUI()
+        //updateUI()
     }
-    private func updateUI() {
-        let favorite = DataStorage.shared.isFavourite(city: city)
+    private func updateUI(for favourite: Bool) {
+        //let favorite = DataStorage.shared.isFavourite(city: city)
         let image: UIImage
-        
-        if favorite {
+        image = favourite ? UIImage(named: "Star_on")! : UIImage(named: "Star_off")!
+        /*if favorite {
             image = UIImage(named: "Star_on")!
         } else {
             image = UIImage(named: "Star_off")!
-        }
+        }*/
         navigationItem.rightBarButtonItem?.image = image
+    }
+}
+extension CityViewController: DataStorageDelegate {
+    func cityFavouriteChanged(_ city: City, _ favourite: Bool) {
+        if city.name == self.city.name {
+            updateUI(for: !favourite)
+        }
     }
 }
