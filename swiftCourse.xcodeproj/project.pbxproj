@@ -102,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DC81C6D207622F9006FF545 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				CE0EA3E6206D0BF9009188C4 /* CountryessViewController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		CE0EA3EC206D1734009188C4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +149,7 @@
 				CE22F366205A92B3005FDC00 /* swiftCourseTests */,
 				CE22F371205A92B3005FDC00 /* swiftCourseUITests */,
 				CE22F34D205A92B2005FDC00 /* Products */,
+				0DC81C6D207622F9006FF545 /* New Group */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,7 +169,6 @@
 				CE22F34F205A92B2005FDC00 /* AppDelegate.swift */,
 				CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */,
 				0DC81C6B20755EC3006FF545 /* FavCustomTableViewCell.swift */,
-				CE0EA3E6206D0BF9009188C4 /* CountryessViewController.swift */,
 				CE0EA3EF206D1783009188C4 /* User & User Manager */,
 				CE0EA3EE206D175F009188C4 /* Cities & Counrties */,
 				CE0EA3EC206D1734009188C4 /* ViewControllers */,

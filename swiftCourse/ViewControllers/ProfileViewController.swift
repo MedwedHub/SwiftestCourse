@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class ProfileViewController: UIViewController {
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var birthdayField: UITextField!
@@ -95,7 +96,6 @@ class ProfileViewController: UIViewController {
     }
     @IBAction func avatarSet(_ sender: Any) {
         let alert = UIAlertController(title: "Choose your image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        
         let galleryButton = UIAlertAction(title: "Gallery", style: .default, handler: {(action) in
             self.present(self.imagePicker, animated: true, completion: nil)})
         let cameraButton = UIAlertAction(title: "Camera", style: .default)

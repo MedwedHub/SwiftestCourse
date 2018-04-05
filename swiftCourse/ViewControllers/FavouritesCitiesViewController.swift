@@ -47,7 +47,6 @@ class FavouritesCitiesViewController: UIViewController, UITableViewDelegate, UIT
         let city = DataStorage.shared.favouriteCities[indexPath!.row]
         cityVC?.city = city
     }
-    
         override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
