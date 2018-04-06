@@ -15,28 +15,37 @@ class UserManager {
     private let kUserBirthDay = "userBirthDayKey"
     private let kUserDataAvatar = "keyAvatar"
     weak var delegate: UserManagerDelegate?
-    var user: User {
-        get {
-            let name = defaults.string(forKey: kUserName)
-            let birthDay = defaults.object(forKey: kUserBirthDay) as? Date
+    var user: User! {
+        didSet {
+            delegate?.uiDidChange()
+        }
+    }
+    func getUserAsync(completion: @escaping (User)->()) {
+        DispatchQueue.global().async {
+            let name = self.defaults.string(forKey: self.kUserName)
+            let birthDay = self.defaults.object(forKey: self.kUserBirthDay) as? Date
             var imageAvatar: UIImage? = nil
-            if let dataAvatar = defaults.object(forKey: kUserDataAvatar) as? Data {
+            if let dataAvatar = self.defaults.object(forKey: self.kUserDataAvatar) as? Data {
                 imageAvatar = UIImage(data: dataAvatar)
             }
             let user = User(name: name, birthDay: birthDay, avatar: imageAvatar)
-            return user
-        }
-        set {
-            defaults.set(newValue.name, forKey: kUserName)
-            defaults.set(newValue.birthDay, forKey: kUserBirthDay)
-            if let avatar = newValue.avatar {
-                let dataAvatar = UIImagePNGRepresentation(avatar)
-                defaults.set(dataAvatar, forKey: kUserDataAvatar)
+            DispatchQueue.main.async {
+                self.user = user
+                completion(user)
             }
-            delegate?.cityFavouriteChanged()
         }
     }
-}
+    func updateUser(for user: User){
+        defaults.set(user.name, forKey: kUserName)
+        defaults.set(user.birthDay, forKey: kUserBirthDay)
+                if let avatar = user.avatar {
+                    DispatchQueue.global().async {
+                        let dataAvatar = UIImagePNGRepresentation(avatar)
+                        self.defaults.set(dataAvatar, forKey: self.kUserDataAvatar)
+                }
+            }
+        }
+    }
 protocol UserManagerDelegate: class {
-    func cityFavouriteChanged()
+    func uiDidChange()
 }

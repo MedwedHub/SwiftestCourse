@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var avatarImage: UIImageView!
     private var datePicker: UIDatePicker!
     private var userManager: UserManager!
+    private var user: User!
     private let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -30,35 +31,16 @@ class ProfileViewController: UIViewController {
         userManager.delegate = self
         setupNotifications()
         
-        DispatchQueue.global().async {
-            let newUser = self.userManager.user
-            DispatchQueue.main.async {
-                self.configureUI(newUser)
-            }
+        userManager.getUserAsync { (user) in
+            self.user = user
+            self.configureUI(user)
         }
-        /*DispatchQueue.global().async {
-            let myUser = self.userManager.user
-            DispatchQueue.main.async {
-                self.nameField.text = myUser.name
-                let dateString: String
-                if let date = myUser.birthDay {
-                    self.datePicker.date = date
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd-MM-yyyy"
-                    dateString = dateFormatter.string(from: date)
-                } else {
-                    dateString = ""
-                }
-                self.birthdayField.text = dateString
-                self.avatarImage.image = myUser.avatar
-            }
-        }*/
     }
-    func configureUI(_ myUser: User) {
-        avatarImage.image = myUser.avatar
-        nameField.text = myUser.name
+    func configureUI(_ user: User) {
+        avatarImage.image = user.avatar
+        nameField.text = user.name
         let dateString: String
-        if let date = myUser.birthDay {
+        if let date = user.birthDay {
             self.datePicker.date = date
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -110,7 +92,6 @@ class ProfileViewController: UIViewController {
     @objc func keyBoardWillHide(notifications: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.contentOffset = CGPoint.zero
-        //scrollView.scrollsToTop = true
         scrollView.isScrollEnabled = true
     }
     @IBAction func avatarSet(_ sender: Any) {
@@ -160,8 +141,8 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 }
 extension ProfileViewController: UserManagerDelegate {
-    func cityFavouriteChanged() {
-        print("Hey, UI did changed! Let`s do something!")
+    func uiDidChange() {
+        userManager.updateUser(for: userManager.user!)
     }
 }
 

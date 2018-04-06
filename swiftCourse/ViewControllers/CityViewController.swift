@@ -16,6 +16,7 @@ class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cityLabel.text = city.name
+        updateUI()
         DataStorage.shared.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +26,10 @@ class CityViewController: UIViewController {
     @IBAction func pressButton(_ sender: Any) {
         DataStorage.shared.changeFavourite(for: city)
         //updateUI()
+    }
+    private func updateUI() {
+        let favourite = DataStorage.shared.isFavourite(city: city)
+        updateUI(for: favourite)
     }
     private func updateUI(for favourite: Bool) {
         //let favorite = DataStorage.shared.isFavourite(city: city)
@@ -41,10 +46,7 @@ class CityViewController: UIViewController {
 extension CityViewController: DataStorageDelegate {
     func cityFavouriteChanged(_ city: City, _ favourite: Bool) {
         if city.name == self.city.name {
-            updateUI(for: !favourite)
-        }
-        DataStorage.shared.favouriteCities.sort { (city1, city2) -> Bool in
-            return Int(city1.id)! < Int(city2.id)!
+            updateUI(for: favourite)
         }
     }
 }
