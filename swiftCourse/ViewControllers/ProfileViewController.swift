@@ -30,12 +30,16 @@ class ProfileViewController: UIViewController {
         userManager.delegate = self
         setupNotifications()
         
-        DispatchQueue.global().async {
+        userManager.getUser { (user) in
+            self.configureUI(user)
+        }
+        
+        /*DispatchQueue.global().async {
             let newUser = self.userManager.user
             DispatchQueue.main.async {
                 self.configureUI(newUser)
             }
-        }
+        }*/
         /*DispatchQueue.global().async {
             let myUser = self.userManager.user
             DispatchQueue.main.async {
@@ -54,11 +58,11 @@ class ProfileViewController: UIViewController {
             }
         }*/
     }
-    func configureUI(_ myUser: User) {
-        avatarImage.image = myUser.avatar
-        nameField.text = myUser.name
+    func configureUI(_ user: User) {
+        avatarImage.image = user.avatar
+        nameField.text = user.name
         let dateString: String
-        if let date = myUser.birthDay {
+        if let date = user.birthDay {
             self.datePicker.date = date
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -160,7 +164,8 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 }
 extension ProfileViewController: UserManagerDelegate {
-    func cityFavouriteChanged() {
+    func uiDidChange() {
+        userManager.setUser(for: userManager.user)
         print("Hey, UI did changed! Let`s do something!")
     }
 }

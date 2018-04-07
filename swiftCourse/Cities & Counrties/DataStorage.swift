@@ -33,7 +33,8 @@ class DataStorage {
             let id = UUID().uuidString
             let cities = appendCity()
             let capital = cities.first!
-            let c = Country(id: id, name: "Uganda", capital: capital.name + " \(capital.id)", cities: cities)
+            //let c = Country(id: id, name: "Uganda", capital: capital.name + " \(capital.id)", cities: cities)
+            let c = Country(id: id, name: "Uganda", capital: capital.name, cities: cities)
             return c
         }
     }
@@ -52,7 +53,7 @@ class DataStorage {
         } else {
             favouriteCities.append(city)
         }
-        delegate?.cityFavouriteChanged(city, exist)
+        delegate?.cityFavouriteChanged(city, !exist)
     }
     internal func removeCity(city: City) {
         for favourite in favouriteCities {
