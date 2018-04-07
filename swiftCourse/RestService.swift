@@ -38,7 +38,7 @@ class RestService {
                             completion(country)
                         }
                     }   catch{
-                        print("error URLSession")
+                        print("error JSONSerialization")
                     }
                 } else {
                     print("No data")
