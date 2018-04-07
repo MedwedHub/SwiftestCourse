@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityViewController: UIViewController {
+class CityViewController: UIViewController, UITabBarControllerDelegate {
     
     @IBOutlet weak var cityLabel: UILabel!
     internal var city: City!
@@ -25,22 +25,22 @@ class CityViewController: UIViewController {
     }
     @IBAction func pressButton(_ sender: Any) {
         DataStorage.shared.changeFavourite(for: city)
-        //updateUI()
     }
     private func updateUI() {
         let favourite = DataStorage.shared.isFavourite(city: city)
         updateUI(for: favourite)
     }
     private func updateUI(for favourite: Bool) {
-        //let favorite = DataStorage.shared.isFavourite(city: city)
         let image: UIImage
         image = favourite ? UIImage(named: "Star_on")! : UIImage(named: "Star_off")!
-        /*if favorite {
-            image = UIImage(named: "Star_on")!
-        } else {
-            image = UIImage(named: "Star_off")!
-        }*/
         navigationItem.rightBarButtonItem?.image = image
+    }
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let x = navigationController
+        x?.popToRootViewController(animated: true)
+        print("Tabbar")
+        //let navContr = UINavigationController.popToRootViewController(UINavigationController)
+        return true
     }
 }
 extension CityViewController: DataStorageDelegate {
