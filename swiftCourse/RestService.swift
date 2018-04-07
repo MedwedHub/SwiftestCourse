@@ -12,12 +12,12 @@ class RestService {
     private init() {}
     func requestCountry(completion: @escaping (Country)->()) {
         let urlString = "https://htmlweb.ru/geo/api.php?area=41&level=3&json&api_key=4c714b1d9ff48db1044b47da7b672035"
-        let url = URL(string: urlString)
-        guard let url1 = url else{
+        let myUrl = URL(string: urlString)
+        guard let url = myUrl else{
             print("URL Error")
             return
         }
-        var request = URLRequest(url: url1)
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error == nil {
