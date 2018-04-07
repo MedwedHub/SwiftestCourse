@@ -68,6 +68,7 @@ class UserManager {
             defaults.set(dataAvatar, forKey: kUserDataAvatar)
         }
     }
+}
 protocol UserManagerDelegate: class {
     func uiDidChange()
 }
