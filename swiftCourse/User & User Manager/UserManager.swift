@@ -23,18 +23,24 @@ class UserManager {
             let name = defaults.string(forKey: kUserName)
             let birthDay = defaults.object(forKey: kUserBirthDay) as? Date
             var imageAvatar: UIImage? = nil
-            if let dataAvatar = defaults.object(forKey: kUserDataAvatar) as? Data {
+            if let dataAvatar = self.defaults.object(forKey: self.kUserDataAvatar) as? Data {
                 imageAvatar = UIImage(data: dataAvatar)
             }
             let user = User(name: name, birthDay: birthDay, avatar: imageAvatar)
-            return user
+            DispatchQueue.main.async {
+                self.user = user
+                completion(user)
+            }
         }
-        set {
-            defaults.set(newValue.name, forKey: kUserName)
-            defaults.set(newValue.birthDay, forKey: kUserBirthDay)
-            if let avatar = newValue.avatar {
-                let dataAvatar = UIImagePNGRepresentation(avatar)
-                defaults.set(dataAvatar, forKey: kUserDataAvatar)
+    }
+    func updateUser(for user: User){
+        defaults.set(user.name, forKey: kUserName)
+        defaults.set(user.birthDay, forKey: kUserBirthDay)
+                if let avatar = user.avatar {
+                    DispatchQueue.global().async {
+                        let dataAvatar = UIImagePNGRepresentation(avatar)
+                        self.defaults.set(dataAvatar, forKey: self.kUserDataAvatar)
+                }
             }
             delegate?.cityFavouriteChanged()
         }*/
@@ -62,7 +68,6 @@ class UserManager {
             defaults.set(dataAvatar, forKey: kUserDataAvatar)
         }
     }
-}
 protocol UserManagerDelegate: class {
     func uiDidChange()
 }

@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var avatarImage: UIImageView!
     private var datePicker: UIDatePicker!
     private var userManager: UserManager!
+    private var user: User!
     private let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -114,7 +115,6 @@ class ProfileViewController: UIViewController {
     @objc func keyBoardWillHide(notifications: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.contentOffset = CGPoint.zero
-        //scrollView.scrollsToTop = true
         scrollView.isScrollEnabled = true
     }
     @IBAction func avatarSet(_ sender: Any) {

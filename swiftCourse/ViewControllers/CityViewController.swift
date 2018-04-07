@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityViewController: UIViewController {
+class CityViewController: UIViewController, UITabBarControllerDelegate {
     
     @IBOutlet weak var cityLabel: UILabel!
     internal var city: City!
@@ -16,6 +16,7 @@ class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cityLabel.text = city.name
+        updateUI()
         DataStorage.shared.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -24,27 +25,28 @@ class CityViewController: UIViewController {
     }
     @IBAction func pressButton(_ sender: Any) {
         DataStorage.shared.changeFavourite(for: city)
-        //updateUI()
+    }
+    private func updateUI() {
+        let favourite = DataStorage.shared.isFavourite(city: city)
+        updateUI(for: favourite)
     }
     private func updateUI(for favourite: Bool) {
-        //let favorite = DataStorage.shared.isFavourite(city: city)
         let image: UIImage
         image = favourite ? UIImage(named: "Star_on")! : UIImage(named: "Star_off")!
-        /*if favorite {
-            image = UIImage(named: "Star_on")!
-        } else {
-            image = UIImage(named: "Star_off")!
-        }*/
         navigationItem.rightBarButtonItem?.image = image
+    }
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let x = navigationController
+        x?.popToRootViewController(animated: true)
+        print("Tabbar")
+        //let navContr = UINavigationController.popToRootViewController(UINavigationController)
+        return true
     }
 }
 extension CityViewController: DataStorageDelegate {
     func cityFavouriteChanged(_ city: City, _ favourite: Bool) {
         if city.name == self.city.name {
-            updateUI(for: !favourite)
-        }
-        DataStorage.shared.favouriteCities.sort { (city1, city2) -> Bool in
-            return Int(city1.id)! < Int(city2.id)!
+            updateUI(for: favourite)
         }
     }
 }

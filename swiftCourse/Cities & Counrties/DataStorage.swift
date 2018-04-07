@@ -15,9 +15,9 @@ class DataStorage {
     
     var country: Country?
     //private var favouriteCities = [City]()
-    var favouriteCities = [City]()
+    private(set) var favouriteCities = [City]()
     
-    fileprivate func appendCity() -> [City] {
+    fileprivate func generateCities() -> [City] {
         var cities = [City]()
         let rand = arc4random_uniform(50) + 5
         for i in 0..<rand {
@@ -31,7 +31,7 @@ class DataStorage {
             return c
         } else {
             let id = UUID().uuidString
-            let cities = appendCity()
+            let cities = generateCities()
             let capital = cities.first!
             //let c = Country(id: id, name: "Uganda", capital: capital.name + " \(capital.id)", cities: cities)
             let c = Country(id: id, name: "Uganda", capital: capital.name, cities: cities)
