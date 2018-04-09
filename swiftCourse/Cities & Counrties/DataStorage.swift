@@ -33,7 +33,8 @@ class DataStorage {
             let id = UUID().uuidString
             let cities = generateCities()
             let capital = cities.first!
-            let c = Country(id: id, name: "Uganda", capital: capital.name + " \(capital.id)", cities: cities)
+            //let c = Country(id: id, name: "Uganda", capital: capital.name + " \(capital.id)", cities: cities)
+            let c = Country(id: id, name: "Uganda", capital: capital.name, cities: cities)
             return c
         }
     }

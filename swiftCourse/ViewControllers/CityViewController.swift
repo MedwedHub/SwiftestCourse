@@ -35,9 +35,10 @@ class CityViewController: UIViewController, UITabBarControllerDelegate {
         image = favourite ? UIImage(named: "Star_on")! : UIImage(named: "Star_off")!
         navigationItem.rightBarButtonItem?.image = image
     }
+    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        let x = navigationController
-        x?.popToRootViewController(animated: true)
+        //viewController = UINavigationController.popToRootViewController()
+        //x?.popToRootViewController(animated: true)
         print("Tabbar")
         //let navContr = UINavigationController.popToRootViewController(UINavigationController)
         return true

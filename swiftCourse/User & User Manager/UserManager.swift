@@ -16,14 +16,12 @@ class UserManager {
     private let kUserDataAvatar = "keyAvatar"
     weak var delegate: UserManagerDelegate?
     var user: User! {
-        didSet {
-            delegate?.uiDidChange()
+        didSet{
+            print("Set")
         }
-    }
-    func getUserAsync(completion: @escaping (User)->()) {
-        DispatchQueue.global().async {
-            let name = self.defaults.string(forKey: self.kUserName)
-            let birthDay = self.defaults.object(forKey: self.kUserBirthDay) as? Date
+        /*get {
+            let name = defaults.string(forKey: kUserName)
+            let birthDay = defaults.object(forKey: kUserBirthDay) as? Date
             var imageAvatar: UIImage? = nil
             if let dataAvatar = self.defaults.object(forKey: self.kUserDataAvatar) as? Data {
                 imageAvatar = UIImage(data: dataAvatar)
@@ -44,8 +42,33 @@ class UserManager {
                         self.defaults.set(dataAvatar, forKey: self.kUserDataAvatar)
                 }
             }
+            delegate?.cityFavouriteChanged()
+        }*/
+    }
+    func getUser(completion: @escaping (User)->()) {
+        DispatchQueue.global().async {
+            let name = self.defaults.string(forKey: self.kUserName)
+            let birthDay = self.defaults.object(forKey: self.kUserBirthDay) as? Date
+            var imageAvatar: UIImage? = nil
+            if let dataAvatar = self.defaults.object(forKey: self.kUserDataAvatar) as? Data {
+                imageAvatar = UIImage(data: dataAvatar)
+            }
+            let user = User(name: name, birthDay: birthDay, avatar: imageAvatar)
+            DispatchQueue.main.async {
+                self.user = user
+                completion(user)
+            }
         }
     }
+    func setUser(for user: User) {
+        defaults.set(user.name, forKey: kUserName)
+        defaults.set(user.birthDay, forKey: kUserBirthDay)
+        if let avatar = user.avatar {
+            let dataAvatar = UIImagePNGRepresentation(avatar)
+            defaults.set(dataAvatar, forKey: kUserDataAvatar)
+        }
+    }
+}
 protocol UserManagerDelegate: class {
     func uiDidChange()
 }

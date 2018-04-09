@@ -27,6 +27,7 @@
 		CE3B40A12063BF5500B4C9AE /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */; };
 		CE3B40A72063CCED00B4C9AE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B40A62063CCED00B4C9AE /* ProfileViewController.swift */; };
 		CE3B40AB2063D4C100B4C9AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B40AA2063D4C100B4C9AE /* User.swift */; };
+		CE5E203D2078937100956CAC /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E203C2078937100956CAC /* RestService.swift */; };
 		CE62037F205CD99000B6E5FF /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62037E205CD99000B6E5FF /* CityViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CE3B40A62063CCED00B4C9AE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE3B40AA2063D4C100B4C9AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE5E203C2078937100956CAC /* RestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
 		CE62037E205CD99000B6E5FF /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 				CE22F34F205A92B2005FDC00 /* AppDelegate.swift */,
 				CE3B40A02063BF5500B4C9AE /* CustomTableViewCell.swift */,
 				0DC81C6B20755EC3006FF545 /* FavCustomTableViewCell.swift */,
+				CE5E203C2078937100956CAC /* RestService.swift */,
 				CE0EA3EF206D1783009188C4 /* User & User Manager */,
 				CE0EA3EE206D175F009188C4 /* Cities & Counrties */,
 				CE0EA3EC206D1734009188C4 /* ViewControllers */,
@@ -347,6 +350,7 @@
 				CE22F381205A9ECE005FDC00 /* DataStorage.swift in Sources */,
 				CE3B40A72063CCED00B4C9AE /* ProfileViewController.swift in Sources */,
 				CE2721DC206F4A7E00BA97FD /* CountryViewController.swift in Sources */,
+				CE5E203D2078937100956CAC /* RestService.swift in Sources */,
 				CE0EA3E5206CFBA2009188C4 /* UserManager.swift in Sources */,
 				CE62037F205CD99000B6E5FF /* CityViewController.swift in Sources */,
 			);
