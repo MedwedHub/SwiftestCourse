@@ -17,10 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        RestService.shared.requestCountry { (country) in
+        /*RestService.shared.requestCountry { (country) in
             print(country)
-        }
-                
+            DataStorage.shared.saveCountry(country)
+        }*/
+        transfer()
         return true
     }
 
@@ -95,3 +96,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: CountryTransfer {
+    func transfer() {
+        RestService.shared.requestCountry { (country) in
+            DataStorage.shared.country = country
+        }
+}
+}

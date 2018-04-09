@@ -18,6 +18,7 @@ class UserManager {
     var user: User! {
         didSet{
             print("Set")
+            delegate?.uiDidChange()
         }
         /*get {
             let name = defaults.string(forKey: kUserName)
@@ -64,8 +65,11 @@ class UserManager {
         defaults.set(user.name, forKey: kUserName)
         defaults.set(user.birthDay, forKey: kUserBirthDay)
         if let avatar = user.avatar {
-            let dataAvatar = UIImagePNGRepresentation(avatar)
-            defaults.set(dataAvatar, forKey: kUserDataAvatar)
+            DispatchQueue.global().async {
+                print("Last?")
+                let dataAvatar = UIImagePNGRepresentation(avatar)
+                self.defaults.set(dataAvatar, forKey: self.kUserDataAvatar)
+            }
         }
     }
 }

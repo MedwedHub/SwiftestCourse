@@ -17,7 +17,7 @@ class DataStorage {
     //private var favouriteCities = [City]()
     private(set) var favouriteCities = [City]()
     
-    fileprivate func generateCities() -> [City] {
+    /*fileprivate func generateCities() -> [City] {
         var cities = [City]()
         let rand = arc4random_uniform(50) + 5
         for i in 0..<rand {
@@ -25,8 +25,8 @@ class DataStorage {
             cities.append(City(name: "City \(i) with id: ", id: "\(i)"))
         }
         return cities
-    }
-    internal func getCountry() -> Country {
+    }*/
+    /*internal func getCountry() -> Country {
         if let c = country {
             return c
         } else {
@@ -37,6 +37,12 @@ class DataStorage {
             let c = Country(id: id, name: "Uganda", capital: capital.name, cities: cities)
             return c
         }
+    }*/
+    /*func saveCountry(_ country: Country) {
+        self.country = country
+    }*/
+    func countryDidReceive() -> Country {
+        return country!
     }
     internal func isFavourite(city: City) -> Bool {
         for favorite in favouriteCities {

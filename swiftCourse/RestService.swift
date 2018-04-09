@@ -54,3 +54,6 @@ class RestService {
         task.resume()
     }
 }
+protocol CountryTransfer {
+    func transfer()
+}

@@ -13,7 +13,7 @@ class CountryInfoViewController: UIViewController {
     @IBOutlet weak var capital: UILabel!
     @IBOutlet weak var countryName: UILabel!
     
-    private let country = DataStorage.shared.getCountry()
+    private let country = DataStorage.shared.countryDidReceive()
     
     override func viewDidLoad() {
         super.viewDidLoad()
