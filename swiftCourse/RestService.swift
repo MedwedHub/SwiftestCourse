@@ -8,6 +8,8 @@
 
 import Foundation
 class RestService {
+    var delegate: CountryTransfer?
+    var country: Country?
     static let shared = RestService()
     private init() {}
     func requestCountry(completion: @escaping (Country)->()) {
@@ -40,6 +42,9 @@ class RestService {
                             }
                             let country = Country(id: "Ru", name: "Russia", capital: cities.first?.name, cities: cities)
                             completion(country)
+                            self.country = country
+                            self.delegate?.transferred()
+                            print("Delegation")
                         }
                     }   catch{
                         print("error JSONSerialization")
@@ -55,5 +60,5 @@ class RestService {
     }
 }
 protocol CountryTransfer {
-    func transfer()
+    func transferred()
 }

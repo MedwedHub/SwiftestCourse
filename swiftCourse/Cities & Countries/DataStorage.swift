@@ -10,11 +10,11 @@ import Foundation
 
 class DataStorage {
     weak var delegate: DataStorageDelegate?
+    var delegat: TableViewAlert?
     static let shared = DataStorage()
     private init() {}
     
     var country: Country?
-    //private var favouriteCities = [City]()
     private(set) var favouriteCities = [City]()
     
     /*fileprivate func generateCities() -> [City] {
@@ -41,8 +41,13 @@ class DataStorage {
     /*func saveCountry(_ country: Country) {
         self.country = country
     }*/
-    func countryDidReceive() -> Country {
+    /*func countryDidReceive() -> Country {
+        
         return country!
+    }*/
+    func alertCountry() {
+        RestService.shared.delegate = self
+        //delegat?.updateUI()
     }
     internal func isFavourite(city: City) -> Bool {
         for favorite in favouriteCities {
@@ -73,4 +78,14 @@ class DataStorage {
 }
 protocol DataStorageDelegate: class {
     func cityFavouriteChanged(_ city: City, _ favourite: Bool)
+}
+protocol TableViewAlert {
+    func updateUI()
+}
+extension DataStorage: CountryTransfer {
+    func transferred() {
+        country = RestService.shared.country
+        print(country ?? "No country in DataStorage")
+        delegat?.updateUI()
+    }
 }

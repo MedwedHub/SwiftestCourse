@@ -21,7 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(country)
             DataStorage.shared.saveCountry(country)
         }*/
-        transfer()
+        //transfer()
+        RestService.shared.requestCountry { (country) in
+            print("Country recieved")
+            DataStorage.shared.alertCountry()
+            //RestService.shared.delegate?.transferred(country: country)
+        }
         return true
     }
 
@@ -94,12 +99,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-}
-
-extension AppDelegate: CountryTransfer {
-    func transfer() {
-        RestService.shared.requestCountry { (country) in
-            DataStorage.shared.country = country
-        }
-}
 }

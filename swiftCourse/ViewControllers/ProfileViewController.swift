@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //RestService.shared.delegate = self
         nameField.delegate = self
         imagePicker.delegate = self
         configurePicker()
@@ -30,6 +30,10 @@ class ProfileViewController: UIViewController {
         userManager = UserManager()
         userManager.delegate = self
         setupNotifications()
+        
+        
+        
+        
         
         userManager.getUser { (user) in
             self.configureUI(user)
@@ -169,4 +173,8 @@ extension ProfileViewController: UserManagerDelegate {
         print("Hey, UI did changed! Let`s do something!")
     }
 }
-
+/*extension ProfileViewController: CountryTransfer {
+    func transferred() {
+        print("KAZINO")
+    }
+}*/

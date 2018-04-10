@@ -11,16 +11,18 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
-    //let country = DataStorage.shared.getCountry()
     var country: Country?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DataStorage.shared.delegat = self
+        print("TableView has been loaded")
+        country = DataStorage.shared.country
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.country = DataStorage.shared.countryDidReceive()
             self.tableView.reloadData()
-        }
+        }*/
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -51,4 +53,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.reloadData()
     }
 }
-
+extension ViewController: TableViewAlert {
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.country = DataStorage.shared.country
+            self.tableView.reloadData()
+            print("TableView was reloaded!")
+        }
+    }
+}

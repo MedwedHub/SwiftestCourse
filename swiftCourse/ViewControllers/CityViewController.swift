@@ -17,11 +17,14 @@ class CityViewController: UIViewController, UITabBarControllerDelegate {
         super.viewDidLoad()
         cityLabel.text = city.name
         updateUI()
+        print("UI has been loaded")
         DataStorage.shared.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         let favourite = DataStorage.shared.isFavourite(city: city)
+        print("Will appear")
         updateUI(for: favourite)
+        
     }
     @IBAction func pressButton(_ sender: Any) {
         DataStorage.shared.changeFavourite(for: city)
@@ -33,16 +36,10 @@ class CityViewController: UIViewController, UITabBarControllerDelegate {
     private func updateUI(for favourite: Bool) {
         let image: UIImage
         image = favourite ? UIImage(named: "Star_on")! : UIImage(named: "Star_off")!
+        print(favourite)
         navigationItem.rightBarButtonItem?.image = image
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        //viewController = UINavigationController.popToRootViewController()
-        //x?.popToRootViewController(animated: true)
-        print("Tabbar")
-        //let navContr = UINavigationController.popToRootViewController(UINavigationController)
-        return true
-    }
 }
 extension CityViewController: DataStorageDelegate {
     func cityFavouriteChanged(_ city: City, _ favourite: Bool) {
