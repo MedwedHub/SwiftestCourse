@@ -10,7 +10,7 @@ import Foundation
 
 class DataStorage {
     weak var delegate: DataStorageDelegate?
-    var delegat: TableViewAlert?
+    weak var delegat: TableViewAlert?
     static let shared = DataStorage()
     private init() {}
     
@@ -47,7 +47,6 @@ class DataStorage {
     }*/
     func alertCountry() {
         RestService.shared.delegate = self
-        //delegat?.updateUI()
     }
     internal func isFavourite(city: City) -> Bool {
         for favorite in favouriteCities {
@@ -79,7 +78,7 @@ class DataStorage {
 protocol DataStorageDelegate: class {
     func cityFavouriteChanged(_ city: City, _ favourite: Bool)
 }
-protocol TableViewAlert {
+protocol TableViewAlert: class {
     func updateUI()
 }
 extension DataStorage: CountryTransfer {

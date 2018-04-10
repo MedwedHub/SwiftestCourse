@@ -8,7 +8,7 @@
 
 import Foundation
 class RestService {
-    var delegate: CountryTransfer?
+    weak var delegate: CountryTransfer?
     var country: Country?
     static let shared = RestService()
     private init() {}
@@ -59,6 +59,6 @@ class RestService {
         task.resume()
     }
 }
-protocol CountryTransfer {
+protocol CountryTransfer: class {
     func transferred()
 }
